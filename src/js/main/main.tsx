@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { evalTS } from "../lib/utils/bolt";
 import "./main.scss";
+import BasemapGIS from "./basemapGIS/basemapGIS";
 
 // Import the importPNG function
 const importPNG = (params: { fileName: string, extensionPath: string }) => {
   return evalTS("importPNG", params);
 };
 
-const Main = () => {
+// New component for the Import Photo tab
+const ImportPhoto = () => {
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,12 +47,38 @@ const Main = () => {
   };
 
   return (
-    <div className="app">
+    <div>
       <h3>Select a PNG file to import into After Effects</h3>
       <input type="file" accept=".png" onChange={handleFileChange} />
       <button onClick={handleUpload} disabled={!file}>
         Import PNG to AE
       </button>
+    </div>
+  );
+};
+
+const Main = () => {
+  const [activeTab, setActiveTab] = useState<'photo' | 'gis'>('photo');
+
+  return (
+    <div className="app">
+      <div className="tabs">
+        <button 
+          className={`tab ${activeTab === 'photo' ? 'active' : ''}`}
+          onClick={() => setActiveTab('photo')}
+        >
+          Import Photo
+        </button>
+        <button 
+          className={`tab ${activeTab === 'gis' ? 'active' : ''}`}
+          onClick={() => setActiveTab('gis')}
+        >
+          Import GIS File
+        </button>
+      </div>
+      <div className="tab-content">
+        {activeTab === 'photo' ? <ImportPhoto /> : <BasemapGIS />}
+      </div>
     </div>
   );
 };
