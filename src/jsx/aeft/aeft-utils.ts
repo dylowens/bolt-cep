@@ -90,3 +90,34 @@ export const getAeMetadata = (propName: string) => {
   const metadata = new XMPMeta(app.project.xmpPacket);
   return metadata.getProperty(uri, newPropName);
 };
+
+export const importPNG = (params: { fileName: string, extensionPath: string }) => {
+  app.beginUndoGroup("Import PNG");
+  
+  try {
+    var comp = app.project.activeItem;
+    
+    if (!(comp instanceof CompItem)) {
+      return "Error: Please select a composition.";
+    }
+    
+    var pngFile = new File(params.fileName);
+    
+    if (!pngFile.exists) {
+      return "Error: PNG file does not exist: " + pngFile.fsName;
+    }
+    
+    var importOptions = new ImportOptions(pngFile);
+    var importedItem = app.project.importFile(importOptions);
+    if (importedItem instanceof AVItem) {
+      var layer = comp.layers.add(importedItem);
+      return "PNG imported successfully: " + importedItem.name;
+    } else {
+      return "Error: Imported item is not an AVItem";
+    }
+  } catch (e: any) {
+    return "Error importing PNG: " + (e?.toString() || "Unknown error");
+  } finally {
+    app.endUndoGroup();
+  }
+};

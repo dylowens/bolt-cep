@@ -5,7 +5,7 @@ import { debugAll } from "./cep.config.debug"; // BOLT-CEP-DEBUG-ONLY
 const config: CEP_Config = {
   version,
   id: "com.bolt.cep",
-  displayName: "Bolt CEP",
+  displayName: "marble-melon",
   symlink: "local",
   port: 3000,
   servePort: 5000,
@@ -37,7 +37,7 @@ const config: CEP_Config = {
     {
       mainPath: "./main/index.html",
       name: "main",
-      panelDisplayName: "Bolt CEP",
+      panelDisplayName: "Marble Melon",
       autoVisible: true,
       width: 600,
       height: 650,
