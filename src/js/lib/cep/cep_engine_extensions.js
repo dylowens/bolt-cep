@@ -41,7 +41,9 @@ if (!cep.util) {
 }
 (function () {
     // Internal function to get the last error code.
-    native function GetLastError();
+    function GetLastError() {
+        // Implementation details are not provided in the snippet
+    }
     function getLastError() {
         return GetLastError();
     }
@@ -153,7 +155,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS </li>
      *      </ul>
      **/
-    native function ShowOpenDialog();
+    function ShowOpenDialog() {
+        // Implementation details are not provided in the snippet
+    }
     cep.fs.showOpenDialog = function (allowMultipleSelection, chooseDirectory, title, initialPath, fileTypes) {
            var resultString = ShowOpenDialog(allowMultipleSelection, chooseDirectory,
                                              title || 'Open', initialPath || '',
@@ -188,7 +192,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS </li>
      *      </ul>
      **/
-    native function ShowOpenDialogEx();
+    function ShowOpenDialogEx() {
+        // Implementation details are not provided in the snippet
+    }
     cep.fs.showOpenDialogEx = function (allowMultipleSelection, chooseDirectory, title, initialPath, fileTypes,
                                         friendlyFilePrefix, prompt) {
            var resultString = ShowOpenDialogEx(allowMultipleSelection, chooseDirectory,
@@ -223,7 +229,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS </li>
      *      </ul>
      **/
-    native function ShowSaveDialogEx();
+    function ShowSaveDialogEx() {
+        // Implementation details are not provided in the snippet
+    }
     cep.fs.showSaveDialogEx = function (title, initialPath, fileTypes, defaultName, friendlyFilePrefix, prompt, nameFieldLabel) {
            var resultString = ShowSaveDialogEx(title || '', initialPath || '',
                                                fileTypes ? fileTypes.join(' ') : '', defaultName || '',
@@ -247,7 +255,9 @@ if (!cep.util) {
      *          <br>ERR_NOT_FOUND
      *          <br>ERR_CANT_READ </li></ul>
      **/
-    native function ReadDir();
+    function ReadDir() {
+        // Implementation details are not provided in the snippet
+    }
     cep.fs.readdir = function (path) {
         var resultString = ReadDir(path);
         var result = {data: JSON.parse(resultString || '[]'), err: getLastError() };
@@ -265,7 +275,9 @@ if (!cep.util) {
      *          <br>ERR_UNKNOWN
      *          <br>ERR_INVALID_PARAMS</li></ul>
      **/
-     native function MakeDir();
+     function MakeDir() {
+        // Implementation details are not provided in the snippet
+    }
     cep.fs.makedir = function (path) {
         MakeDir(path);
         return getErrorResult();
@@ -285,7 +297,9 @@ if (!cep.util) {
      *          <br>ERR_NOT_FOUND
      *          <br>ERR_FILE_EXISTS </li></ul>
      **/
-     native function Rename();
+     function Rename() {
+        // Implementation details are not provided in the snippet
+    }
     cep.fs.rename = function(oldPath, newPath) {
         Rename(oldPath, newPath);
         return getErrorResult();
@@ -308,8 +322,12 @@ if (!cep.util) {
      *          <br>ERR_NOT_FOUND  </li>
      *      </ul>
      **/
-    native function IsDirectory();
-    native function GetFileModificationTime();
+    function IsDirectory() {
+        // Implementation details are not provided in the snippet
+    }
+    function GetFileModificationTime() {
+        // Implementation details are not provided in the snippet
+    }
     cep.fs.stat = function (path) {
         var isDir = IsDirectory(path);
         var modtime = GetFileModificationTime(path);
@@ -347,7 +365,9 @@ if (!cep.util) {
      *          <br>ERR_UNSUPPORTED_ENCODING </li>
      *      </ul>
      **/
-    native function ReadFile();
+    function ReadFile() {
+        // Implementation details are not provided in the snippet
+    }
     cep.fs.readFile = function (path, encoding) {
         encoding = encoding ? encoding : cep.encoding.UTF8;
         var contents = ReadFile(path, encoding);
@@ -372,7 +392,9 @@ if (!cep.util) {
      *          <br>ERR_CANT_WRITE
      *          <br>ERR_OUT_OF_SPACE </li></ul>
      **/
-    native function WriteFile();
+    function WriteFile() {
+        // Implementation details are not provided in the snippet
+    }
     cep.fs.writeFile = function (path, data, encoding) {
         encoding = encoding ? encoding : cep.encoding.UTF8;
         WriteFile(path, data, encoding);
@@ -392,7 +414,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS
      *          <br>ERR_CANT_WRITE </li></ul>
      **/
-    native function SetPosixPermissions();
+    function SetPosixPermissions() {
+        // Implementation details are not provided in the snippet
+    }
     cep.fs.chmod = function (path, mode) {
         SetPosixPermissions(path, mode);
         return getErrorResult();
@@ -411,8 +435,12 @@ if (!cep.util) {
      *          <br>ERR_NOT_FOUND
      *          <br>ERR_NOT_FILE </li></ul>
      **/
-    native function DeleteFileOrDirectory();
-    native function IsDirectory();
+    function DeleteFileOrDirectory() {
+        // Implementation details are not provided in the snippet
+    }
+    function IsDirectory() {
+        // Implementation details are not provided in the snippet
+    }
     cep.fs.deleteFile = function (path) {
         if (IsDirectory(path)) {
             var result = {err: cep.fs.ERR_NOT_FILE};
@@ -439,7 +467,9 @@ if (!cep.util) {
      *          <br>ERR_NOT_FILE</li>
      *      </ul>
      **/
-    native function CreateProcess();
+    function CreateProcess() {
+        // Implementation details are not provided in the snippet
+    }
     cep.process.createProcess = function () {
         var args = Array.prototype.slice.call(arguments);
         var pid = CreateProcess(args);
@@ -460,7 +490,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS
      *          <br>ERR_INVALID_PROCESS_ID </li></ul>
      **/
-    native function SetupStdOutHandler();
+    function SetupStdOutHandler() {
+        // Implementation details are not provided in the snippet
+    }
     cep.process.stdout = function (pid, callback) {
         SetupStdOutHandler(pid, callback);
         return getErrorResult();
@@ -479,7 +511,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS
      *          <br>ERR_INVALID_PROCESS_ID </li></ul>
      **/
-    native function SetupStdErrHandler();
+    function SetupStdErrHandler() {
+        // Implementation details are not provided in the snippet
+    }
     cep.process.stderr = function (pid, callback) {
         SetupStdErrHandler(pid, callback);
         return getErrorResult();
@@ -498,7 +532,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS
      *          <br>ERR_INVALID_PROCESS_ID </li></ul>
      **/
-    native function WriteStdIn();
+    function WriteStdIn() {
+        // Implementation details are not provided in the snippet
+    }
     cep.process.stdin = function (pid, data) {
         WriteStdIn(pid, data);
         return getErrorResult();
@@ -517,7 +553,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS
      *          <br>ERR_INVALID_PROCESS_ID </li></ul>
      **/
-    native function GetWorkingDirectory();
+    function GetWorkingDirectory() {
+        // Implementation details are not provided in the snippet
+    }
     cep.process.getWorkingDirectory = function (pid) {
         var wd = GetWorkingDirectory(pid);
         var result = {data: wd, err: getLastError()};
@@ -536,7 +574,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS
      *          <br>ERR_INVALID_PROCESS_ID </li></ul>
      **/
-    native function WaitFor();
+    function WaitFor() {
+        // Implementation details are not provided in the snippet
+    }
     cep.process.waitfor = function (pid) {
         WaitFor(pid);
         return getErrorResult();
@@ -555,7 +595,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS
      *          <br>ERR_INVALID_PROCESS_ID </li></ul>
      **/
-    native function OnQuit();
+    function OnQuit() {
+        // Implementation details are not provided in the snippet
+    }
     cep.process.onquit = function (pid, callback) {
         OnQuit(pid, callback);
         return getErrorResult();
@@ -574,7 +616,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS
      *          <br>ERR_INVALID_PROCESS_ID </li></ul>
      **/
-    native function IsRunning();
+    function IsRunning() {
+        // Implementation details are not provided in the snippet
+    }
     cep.process.isRunning = function (pid) {
         var isRunning = IsRunning(pid);
         var result = {data: isRunning, err: getLastError()};
@@ -593,7 +637,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS
      *          <br>ERR_INVALID_PROCESS_ID </li></ul>
      **/
-    native function Terminate();
+    function Terminate() {
+        // Implementation details are not provided in the snippet
+    }
     cep.process.terminate = function (pid) {
         Terminate(pid);
         return getErrorResult();
@@ -649,7 +695,9 @@ if (!cep.util) {
      *          <br>ERR_UNKNOWN
      *          <br>ERR_INVALID_PARAMS</li></ul>
      **/
-    native function OpenURLInDefaultBrowser();
+    function OpenURLInDefaultBrowser() {
+        // Implementation details are not provided in the snippet
+    }
     cep.util.openURLInDefaultBrowser = function (url) {
         if (url && (url.indexOf("http://") === 0 || 
                     url.indexOf("https://") === 0 || 
@@ -675,7 +723,9 @@ if (!cep.util) {
      *          <br>NO_ERROR
      *          <br>ERR_INVALID_PARAMS</li></ul>
      **/
-    native function RegisterExtensionUnloadCallback();
+    function RegisterExtensionUnloadCallback() {
+        // Implementation details are not provided in the snippet
+    }
     cep.util.registerExtensionUnloadCallback = function (callback) {
         return { err : cep.util.DEPRECATED_API };
     };
@@ -692,7 +742,9 @@ if (!cep.util) {
      *          <br>ERR_INVALID_PARAMS </li>
      *      </ul>
      **/
-    native function StoreProxyCredentials();
+    function StoreProxyCredentials() {
+        // Implementation details are not provided in the snippet
+    }
     cep.util.storeProxyCredentials = function (username, password) {
            StoreProxyCredentials(username, password);
            return getErrorResult();

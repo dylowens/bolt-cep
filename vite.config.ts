@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, PluginOption } from "vite";
 import react from "@vitejs/plugin-react";
 import { cep, runAction } from "vite-cep-plugin";
 import cepConfig from "./cep.config";
@@ -48,8 +48,8 @@ if (action) {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),  // Add this line
-    cep(config),
+    react() as PluginOption,
+    cep(config) as PluginOption,
   ],
   resolve: {
     alias: [{ find: "@esTypes", replacement: path.resolve(__dirname, "src") }],
