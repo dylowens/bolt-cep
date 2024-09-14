@@ -28,6 +28,26 @@ const BasemapGIS: React.FC = () => {
       center: [-74.5, 40], // starting position [lng, lat]
       zoom: 9
     });
+
+    // Add this resize handler
+    const resizeMap = () => {
+      if (map.current && mapContainer.current) {
+        const containerWidth = mapContainer.current.offsetWidth;
+        mapContainer.current.style.height = `${containerWidth}px`;
+        map.current.resize();
+      }
+    };
+
+    // Call it once to set initial size
+    resizeMap();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', resizeMap);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('resize', resizeMap);
+    };
   }, []);
 
   useEffect(() => {

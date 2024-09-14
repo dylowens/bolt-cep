@@ -1,13 +1,15 @@
 .basemap-gis {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   position: relative;
 }
 
 .map-container {
   flex-grow: 1;
+  width: 100%;
+  // Remove any height declaration here
 }
 
 .search-bar {
