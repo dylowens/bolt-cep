@@ -24,14 +24,14 @@ const config: CEP_Config = {
     { name: "PPRO", version: "[0.0,99.9]" },
   ],
 
-  type: "Panel",
+  type: "Embedded",
   iconDarkNormal: "./src/assets/light-icon.png",
   iconNormal: "./src/assets/dark-icon.png",
   iconDarkNormalRollOver: "./src/assets/light-icon.png",
   iconNormalRollOver: "./src/assets/dark-icon.png",
   parameters: ["--v=0", "--enable-nodejs", "--mixed-context"],
-  width: 500,
-  height: 550,
+  width: 300,
+  height: 500,
 
   panels: [
     {

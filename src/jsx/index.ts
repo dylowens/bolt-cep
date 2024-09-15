@@ -8,29 +8,29 @@ import * as aeft from "./aeft/aeft";
 const host = typeof $ !== "undefined" ? $ : window;
 
 // A safe way to get the app name since some versions of Adobe Apps broken BridgeTalk in various places (e.g. After Effects 24-25)
-// in that case we have to do various checks per app to deterimine the app name
+// in that case we have to do various checks per app to determine the app name
 
-const getAppNameSafely = (): ApplicationName | "unknown" => {
-  const compare = (a: string, b: string) => {
+function getAppNameSafely() {
+  function compare(a: string, b: string): boolean {
     return a.toLowerCase().indexOf(b.toLowerCase()) > -1;
-  };
-  const exists = (a: any) => typeof a !== "undefined";
-  const isBridgeTalkWorking =
+  }
+  function exists(a: unknown): boolean {
+    return typeof a !== "undefined";
+  }
+  var isBridgeTalkWorking =
     typeof BridgeTalk !== "undefined" &&
     typeof BridgeTalk.appName !== "undefined";
 
   if (isBridgeTalkWorking) {
     return BridgeTalk.appName;
   } else if (app) {
-    //@ts-ignore
-    if (exists(app.appName)) {
-      //@ts-ignore
-      const appName: string = app.appName;
+    if (exists((app as any).appName)) {
+      var appName = (app as any).appName;
       if (compare(appName, "after effects")) return "aftereffects";
     }
-  }  // Added closing brace for the else if block
+  }
   return "unknown";
-};
+}
 
 switch (getAppNameSafely()) {
   case "aftereffects":
@@ -39,10 +39,11 @@ switch (getAppNameSafely()) {
     break;
 }
 
-export type Scripts = typeof aeft
+// Type definitions (these won't be included in the compiled JS)
+/*
+type Scripts = typeof aeft;
 
-// https://extendscript.docsforadobe.dev/interapplication-communication/bridgetalk-class.html?highlight=bridgetalk#appname
 type ApplicationName =
   | "aftereffects"
   | "aftereffectsbeta";
-
+*/

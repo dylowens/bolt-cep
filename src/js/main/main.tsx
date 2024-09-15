@@ -30,7 +30,7 @@ const ImportPhoto = () => {
 
         const result = await importPNG({
           fileName: filePath,
-          extensionPath: '' // Add this line with an appropriate value if needed
+          extensionPath: ''
         });
 
         console.log("Import result:", result);

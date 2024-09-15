@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import './basemapGIS.scss';
+import './basemapGIS.scss';// Add this import
+import { evalTS } from '../../lib/utils/bolt'; // Add this import
 
 // You should replace this with your actual Mapbox access token
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHlsb3dlbnMiLCJhIjoiY2xoZWM3Y2EyMHVyNjNjczd3bHdxbDN1ZiJ9.mCmee7hWLyBUe4S-2XVG-A';
@@ -76,6 +77,18 @@ const BasemapGIS: React.FC = () => {
     }
   };
 
+  const exportCurrentView = () => {
+    evalTS("createBasemapComp")
+      .then((result) => {
+        console.log(result);
+        alert(result);
+      })
+      .catch((error) => {
+        console.error("Error creating basemap composition:", error);
+        alert("Error creating basemap composition");
+      });
+  };
+
   return (
     <div className="basemap-gis">
       <form onSubmit={handleSearch} className="search-bar">
@@ -88,19 +101,25 @@ const BasemapGIS: React.FC = () => {
         <button type="submit">Search</button>
       </form>
       <div ref={mapContainer} className="map-container" />
-      <div className="basemap-options">
-        {basemapStyles.map((style) => (
-          <button
-            key={style.name}
-            className={`basemap-option ${style.name === activeBasemap.name ? 'active' : ''}`}
-            onClick={() => setActiveBasemap(style)}
-          >
-            {style.name}
-          </button>
-        ))}
+      <div className="basemap-controls">
+        <div className="basemap-options">
+          {basemapStyles.map((style) => (
+            <button
+              key={style.name}
+              className={`basemap-option ${style.name === activeBasemap.name ? 'active' : ''}`}
+              onClick={() => setActiveBasemap(style)}
+            >
+              {style.name}
+            </button>
+          ))}
+        </div>
+        <button onClick={exportCurrentView} className="export-button">
+          Export to After Effects
+        </button>
       </div>
     </div>
   );
 };
 
 export default BasemapGIS;
+
