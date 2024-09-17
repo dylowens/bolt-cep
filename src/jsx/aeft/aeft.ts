@@ -10,6 +10,8 @@ import {
 import { importPNG, compFromFootage } from "./aeft-utils";
 import { createBasemapComp } from "./aeft-basemap";
 import { dispatchTS } from "../utils/utils";
+import { captureCompositionPreview } from "./captureCompositionPreview";
+import { writeFile } from "./extendScriptFunctions";
 
 export { 
   helloError, 
@@ -19,7 +21,9 @@ export {
   helloObj, 
   helloVoid, 
   importPNG,
-  createBasemapComp 
+  createBasemapComp,
+  captureCompositionPreview,
+  writeFile
 };
 
 export const helloWorld = () => {

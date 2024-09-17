@@ -76,7 +76,7 @@ export const evalTS = <
 ): Promise<ReturnType<Func>> => {
   return new Promise(function (resolve, reject) {
     const formattedArgs = args
-      .map((arg) => {
+      .map((arg: unknown) => {
         console.log(JSON.stringify(arg));
         return `${JSON.stringify(arg)}`;
       })

@@ -1,3 +1,28 @@
+// ExtendScript functions
+
+/**
+ * Writes data to a file.
+ * @param filePath The path where the file should be saved.
+ * @param data The data to write to the file.
+ * @returns A string indicating success or failure.
+ */
+export function writeFile(filePath: string, data: number[]): string {
+    try {
+        var file = new File(filePath);
+        file.encoding = "BINARY";
+        file.open("w");
+        file.write(Array.prototype.slice.call(data));
+        file.close();
+        
+        // Display success message
+        alert("File successfully written to:\n" + filePath);
+        
+        return filePath;  // Return the file path on success
+    } catch (error) {
+        return "Error saving file: " + (error as Error).toString();
+    }
+}
+
 export function createBasemapComp(imagePath: string) {
   app.beginUndoGroup("Create Basemap Composition");
 
@@ -30,3 +55,5 @@ export function createBasemapComp(imagePath: string) {
     app.endUndoGroup();
   }
 }
+
+

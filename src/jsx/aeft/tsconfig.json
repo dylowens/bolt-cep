@@ -10,5 +10,5 @@
       "../../../node_modules/types-for-adobe/shared/XMPScript"
     ]
   },
-  "include": ["./**/*"]
+  "include": ["./**/*", "../../js/main/basemapGIS/exportMap.tsx"]
 }

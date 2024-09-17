@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "extendscript-debug",
+      "request": "launch",
+      "name": "Launch in After Effects",
+      "hostAppSpecifier": "aftereffects-24.0", // Adjust version as needed
+      "script": "${file}",
+      "engineName": "main",
+      "debugLevel": 1
+    }
+  ]
+}

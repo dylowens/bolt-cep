@@ -1,103 +1,171 @@
+/* Reset default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .basemap-gis {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
   position: relative;
+  width: 100%;
+  max-width: 300px; /* Reduced from 600px */
+  margin: 0 auto;
+  background: #000;
+  border: 1px solid #fff; /* Reduced from 2px */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Reduced from 10px */
+  overflow: hidden;
+  border-radius: 4px; /* Reduced from 8px */
 }
 
 .map-container {
-  flex-grow: 1;
+  position: relative;
   width: 100%;
-  // Remove any height declaration here
+  padding-top: 56.25%;
+  background: #000;
+  border-radius: 3px; /* Reduced from 6px */
+  overflow: hidden;
 }
 
-.search-bar {
+.maplibregl-map {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 1;
-  display: flex;
-  
-  input {
-    padding: 5px;
-    font-size: 12px;
-    border: none;
-    border-radius: 4px 0 0 4px;
-    width: 150px;
-  }
-  
-  button {
-    padding: 5px 10px;
-    font-size: 12px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    
-    &:hover {
-      background-color: #2980b9;
-    }
-  }
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .basemap-controls {
-  position: absolute;
-  bottom: 40px; // Increased from 20px to move it up
-  left: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  top: 5px; /* Reduced from 10px */
+  padding: 5px; /* Reduced from 10px */
+  border-radius: 2px; /* Reduced from 4px */
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); /* Reduced from 5px */
+  max-width: 100px; /* Reduced from 200px */
+  font-size: 0.45rem; /* Reduced from 0.9rem */
+}
+
+.search-bar {
+  top: 5px; /* Reduced from 10px */
+  padding: 4px; /* Reduced from 8px */
+  border-radius: 2px; /* Reduced from 4px */
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); /* Reduced from 5px */
+  max-width: 100px; /* Reduced from 200px */
+  font-size: 0.45rem; /* Reduced from 0.9rem */
+}
+
+.search-bar input[type='text'] {
+  width: 50px; /* Reduced from 100px */
+  padding: 3px 4px; /* Reduced from 6px 8px */
+  font-size: 0.45rem; /* Reduced from 0.9rem */
+  border-radius: 2px; /* Reduced from 4px */
+}
+
+.search-bar button {
+  padding: 3px 4px; /* Reduced from 6px 8px */
+  margin-left: 3px; /* Reduced from 5px */
+  font-size: 0.45rem; /* Reduced from 0.9rem */
+  border-radius: 2px; /* Reduced from 4px */
 }
 
 .basemap-options {
-  display: flex;
-  flex-direction: row;
-  background-color: rgba(44, 62, 80, 0.8);
-  padding: 5px;
-  border-radius: 8px;
-  margin-bottom: 10px; // Add space between options and export button
+  margin-bottom: 5px; /* Reduced from 10px */
 }
 
-.basemap-option {
-  margin: 0 3px;
-  padding: 4px 8px;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ecf0f1;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  font-size: 10px;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 4px;
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-
-  &.active {
-    background-color: #3498db;
-    color: #fff;
-  }
+.basemap-options label {
+  margin-bottom: 2px; /* Reduced from 4px */
+  font-size: 0.45rem; /* Reduced from 0.9rem */
 }
 
-// Add this new class for the export button
+.basemap-options select {
+  padding: 3px 4px; /* Reduced from 6px 8px */
+  font-size: 0.45rem; /* Reduced from 0.9rem */
+  border-radius: 2px; /* Reduced from 4px */
+}
+
+.slider-controls {
+  margin-bottom: 5px; /* Reduced from 10px */
+}
+
+.slider-controls label {
+  margin-bottom: 2px; /* Reduced from 4px */
+  font-size: 0.45rem; /* Reduced from 0.9rem */
+}
+
+.slider-controls input[type='range'] {
+  margin-bottom: 4px; /* Reduced from 8px */
+}
+
+.export-controls label {
+  margin-bottom: 2px; /* Reduced from 4px */
+  font-size: 0.45rem; /* Reduced from 0.9rem */
+}
+
+.export-controls select {
+  padding: 3px 4px; /* Reduced from 6px 8px */
+  font-size: 0.45rem; /* Reduced from 0.9rem */
+  border-radius: 2px; /* Reduced from 4px */
+  margin-bottom: 4px; /* Reduced from 8px */
+}
+
 .export-button {
-  margin: 0;
-  padding: 8px 16px;
-  border: none;
-  background-color: #3498db;
-  color: #ffffff;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 4px;
+  padding: 4px 5px; /* Reduced from 8px 10px */
+  font-size: 0.45rem; /* Reduced from 0.9rem */
+  border-radius: 2px; /* Reduced from 4px */
+}
 
-  &:hover {
-    background-color: #2980b9;
+.progress-container {
+  height: 8px; /* Reduced from 15px */
+  margin-top: 4px; /* Reduced from 8px */
+}
+
+@media (max-width: 300px) { /* Reduced from 600px */
+  .basemap-gis {
+    width: 95vw; /* Slightly increased from 90vw for better visibility */
+    margin: 5px auto; /* Reduced from 10px */
+  }
+
+  .basemap-controls,
+  .search-bar {
+    max-width: 90px; /* Reduced from 180px */
+    padding: 4px; /* Reduced from 8px */
   }
 }
+
+/* Remove the duplicate zoom in/out feature */
+.maplibregl-control-container .maplibregl-ctrl-top-right {
+  display: none;
+}
+
+/* Existing styles remain the same */
+
+.progress-container {
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 8px;
+  margin-top: 4px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: #4CAF50;
+  transition: width 0.3s;
+}
+
+.export-button {
+  padding: 4px 5px;
+  font-size: 0.45rem;
+  border-radius: 2px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+}
+
+/* The rest of the existing styles remain unchanged */

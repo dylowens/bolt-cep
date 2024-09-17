@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { evalTS } from "../lib/utils/bolt";
 import "./main.scss";
 import BasemapGIS from "./basemapGIS/basemapGIS";
+import CompositionPreview from './preview/preview';
 
 // Import the importPNG function
 const importPNG = (params: { fileName: string, extensionPath: string }) => {
@@ -58,7 +59,7 @@ const ImportPhoto = () => {
 };
 
 const Main = () => {
-  const [activeTab, setActiveTab] = useState<'photo' | 'gis'>('photo');
+  const [activeTab, setActiveTab] = useState<'photo' | 'gis' | 'preview'>('photo');
 
   return (
     <div className="app">
@@ -75,9 +76,17 @@ const Main = () => {
         >
           Import GIS File
         </button>
+        <button 
+          className={`tab ${activeTab === 'preview' ? 'active' : ''}`}
+          onClick={() => setActiveTab('preview')}
+        >
+          Preview
+        </button>
       </div>
       <div className="tab-content">
-        {activeTab === 'photo' ? <ImportPhoto /> : <BasemapGIS />}
+        {activeTab === 'photo' && <ImportPhoto />}
+        {activeTab === 'gis' && <BasemapGIS />}
+        {activeTab === 'preview' && <CompositionPreview />}
       </div>
     </div>
   );
